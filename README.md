@@ -24,7 +24,7 @@ With NPM, you can use the DNS-01 challenge to obtain an SSL certificate or even 
       build: .
       restart: always
       ports:
-        - "33478:33478"
+        - "33478:33478/udp"
       volumes:
         - "/var/run/tailscale/tailscaled.sock:/var/run/tailscale/tailscaled.sock"
   ```
