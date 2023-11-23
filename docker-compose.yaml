@@ -1,0 +1,18 @@
+version: '3'
+services:
+  npm:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    ports:
+      - '127.0.0.1:81:81'
+      - '23333:443'
+  derp:
+    build: .
+    restart: always
+    ports:
+      - "33478:33478"
+    volumes:
+      - "/var/run/tailscale/tailscaled.sock:/var/run/tailscale/tailscaled.sock"
