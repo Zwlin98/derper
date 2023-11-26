@@ -19,12 +19,12 @@ With NPM, you can use the DNS-01 challenge to obtain an SSL certificate or even 
         - ./letsencrypt:/etc/letsencrypt
       ports:
         - '127.0.0.1:81:81'
-        - '23333:443'
+        - '233:443'
     derp:
       build: .
       restart: always
       ports:
-        - "33478:33478/udp"
+        - "3478:3478/udp"
       volumes:
         - "/var/run/tailscale/tailscaled.sock:/var/run/tailscale/tailscaled.sock"
   ```
@@ -68,7 +68,7 @@ regions:
         hostname: myderp.mydomain.no
         ipv4: 123.123.123.123
         ipv6: "2604:a880:400:d1::828:b001"
-        stunport: 33478
+        stunport: 3478
         stunonly: false
-        derpport: 23333
+        derpport: 233
 ```
