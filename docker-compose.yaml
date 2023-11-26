@@ -8,11 +8,11 @@ services:
       - ./letsencrypt:/etc/letsencrypt
     ports:
       - '127.0.0.1:81:81'
-      - '23333:443'
+      - '233:443'
   derp:
     build: .
     restart: always
     ports:
-      - "33478:33478/udp"
+      - "3478:3478/udp"
     volumes:
       - "/var/run/tailscale/tailscaled.sock:/var/run/tailscale/tailscaled.sock"
