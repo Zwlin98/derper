@@ -1,19 +1,11 @@
-FROM golang as builder
+FROM golang
 
 ENV GO111MODULE on
 ENV GOPROXY https://goproxy.cn
 
 RUN go install tailscale.com/cmd/derper@main
 
-FROM busybox
-
-ENV LANG C.UTF-8
-
-WORKDIR /app
-
-COPY --from=builder /go/bin/derper .
-
-CMD /app/derper \
+CMD derper \
     -a :80 \
-    -stun-port 33478 \
+    -stun-port 3478 \
     --verify-clients true
